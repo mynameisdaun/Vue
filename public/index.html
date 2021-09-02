@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -15,3 +16,54 @@
     <!-- built files will be auto injected -->
   </body>
 </html>
+=======
+<html>
+<head>
+<title>Vue Component Registration</title>
+<meta charset="utf-8">
+</head>
+<body>
+<div id="app">
+    <child-component v-bind:propsdata="message" v-on:show-log="printText"></child-component>
+    <sibling-component v-bind:propsdata="anotherMessage"></sibling-component>
+
+</div>
+
+<script src="http://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<script>s
+    var local = {
+        template: '<button v-on:click="showLog">show!!</button>',
+        props:['propsdata'],
+        methods:{
+            showLog: function() {
+                this.$emit('show-log');
+            }
+        }
+    }
+
+    Vue.component('sibling-component',{
+        props:['propsdata'],
+        template: '<p>{{propsdata}}</p>'
+    });
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message: 'Hello Vue! passed from Parent Component',
+            anotherMessage: 'hi hi hi! this is for tets'
+        },
+        components:{
+            'child-component': local
+        },
+        methods:{
+            printText: function() {
+                console.log("received an eve123nt");
+            }
+        }
+    });
+
+
+</script>
+</body>
+</html>
+>>>>>>> 6db8d911a86e9617b3224ce17f2fc2a3a3ae0926
